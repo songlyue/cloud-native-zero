@@ -1,0 +1,26 @@
+syntax = "v1"
+
+info(
+    title: "testApi"
+    desc: "testApi"
+    author: "type author here"
+    email: "type email here"
+    version: "type version here"
+)
+
+type request {
+    Id int64 `form:"id"`
+}
+
+type response {
+    Message string `json:"message"`
+}
+
+@server(
+    jwt: JwtAuth
+    group: test
+)
+service testApi {
+    @handler test
+    get /test (request) returns (response)
+}
