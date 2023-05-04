@@ -2,10 +2,9 @@
 package handler
 
 import (
+	"cloud-native-zero/app/testApi/cmd/api/internal/handler/test"
+	"cloud-native-zero/app/testApi/cmd/api/internal/svc"
 	"net/http"
-
-	test "cloud-native-zero/app/order/cmd/api/internal/handler/test"
-	"cloud-native-zero/app/order/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"cloud-native-zero/app/order/cmd/api/internal/config"
+	"cloud-native-zero/app/testApi/cmd/api/internal/config"
 )
 
 type ServiceContext struct {

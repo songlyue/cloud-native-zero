@@ -1,9 +1,9 @@
 package test
 
 import (
-	"cloud-native-zero/app/order/cmd/api/internal/logic/test"
-	"cloud-native-zero/app/order/cmd/api/internal/svc"
-	"cloud-native-zero/app/order/cmd/api/internal/types"
+	"cloud-native-zero/app/testApi/cmd/api/internal/logic/test"
+	"cloud-native-zero/app/testApi/cmd/api/internal/svc"
+	"cloud-native-zero/app/testApi/cmd/api/internal/types"
 	"cloud-native-zero/common/result"
 	"github.com/zeromicro/go-zero/rest/httpx"
 	"net/http"

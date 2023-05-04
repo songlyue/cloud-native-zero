@@ -1,8 +1,8 @@
 package test
 
 import (
-	"cloud-native-zero/app/order/cmd/api/internal/svc"
-	"cloud-native-zero/app/order/cmd/api/internal/types"
+	"cloud-native-zero/app/testApi/cmd/api/internal/svc"
+	"cloud-native-zero/app/testApi/cmd/api/internal/types"
 	"context"
 
 	"github.com/zeromicro/go-zero/core/logx"
