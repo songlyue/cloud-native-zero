@@ -1,6 +1,7 @@
 package test
 
 import (
+	"cloud-native-zero/app/testApi/cmd/api/client/pb"
 	"cloud-native-zero/app/testApi/cmd/api/internal/svc"
 	"cloud-native-zero/app/testApi/cmd/api/internal/types"
 	"context"
@@ -23,7 +24,13 @@ func NewTestLogic(ctx context.Context, svcCtx *svc.ServiceContext) *TestLogic {
 }
 
 func (l *TestLogic) Test(req *types.Request) (resp *types.Response, err error) {
-	// todo: add your logic here and delete this line
-	// todo
+	testReq := pb.TestReq{Id: 123123}
+	test, err := l.svcCtx.TestRpc.Test(l.ctx, &testReq)
+	if err != nil {
+		return nil, err
+	}
+	resp = new(types.Response)
+
+	resp.Message = test.Message
 	return
 }

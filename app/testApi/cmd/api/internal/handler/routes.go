@@ -2,9 +2,10 @@
 package handler
 
 import (
-	"cloud-native-zero/app/testApi/cmd/api/internal/handler/test"
-	"cloud-native-zero/app/testApi/cmd/api/internal/svc"
 	"net/http"
+
+	test "cloud-native-zero/app/testApi/cmd/api/internal/handler/test"
+	"cloud-native-zero/app/testApi/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )
@@ -17,7 +18,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/test",
 				Handler: test.TestHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/Dbtest",
+				Handler: test.DbtestHandler(serverCtx),
+			},
 		},
-		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),
 	)
 }

@@ -1,7 +1,7 @@
 package result
 
 import (
-	"ebag-homework-data/common/xerr"
+	"cloud-native-zero/common/xerr"
 	"fmt"
 	"github.com/go-sql-driver/mysql"
 	"net/http"

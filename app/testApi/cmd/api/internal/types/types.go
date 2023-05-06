@@ -8,3 +8,11 @@ type Request struct {
 type Response struct {
 	Message string `json:"message"`
 }
+
+type DbRequest struct {
+	Id int64 `form:"id"`
+}
+
+type DbResponse struct {
+	Message string `json:"message"`
+}

@@ -1,0 +1,37 @@
+FROM golang:alpine AS builder
+
+LABEL stage=gobuilder
+
+ENV CGO_ENABLED 0
+ENV GOPROXY https://goproxy.cn,direct
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+#更新并安装时区数据，建议在切换镜像源之后、安装其他依赖之前执行。
+RUN apk update --no-cache && apk add --no-cache tzdata
+
+WORKDIR /build/zero
+
+ADD go.mod .
+ADD go.sum .
+RUN go mod download
+
+RUN apk add --no-cache bash
+COPY . .
+# 构建第一个服务
+COPY  app/testApi/cmd/api/etc  /app/etc
+RUN go build -ldflags="-s -w" -o  /app/testApi  app/testApi/cmd/api/testapi.go
+
+FROM scratch
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/Shanghai
+ENV TZ Asia/Shanghai
+
+WORKDIR /app
+#构建第一个项目
+COPY --from=builder app/testApi /app/testApi
+COPY --from=builder app/etc  app/testApi/cmd/api/etc
+
+
+EXPOSE 8888
+
+CMD ["./testApi"]

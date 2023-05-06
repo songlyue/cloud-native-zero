@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+
+message TestReq{
+  int64  Id = 1;
+}
+
+message TestResp{
+  string message = 2;
+}
+
+service TestRpc {
+  rpc Test(TestReq) returns(TestResp);
+}

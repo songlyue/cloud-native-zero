@@ -1,8 +1,8 @@
 package result
 
 import (
+	"cloud-native-zero/common/xerr"
 	"context"
-	"ebag-homework-data/common/xerr"
 
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"

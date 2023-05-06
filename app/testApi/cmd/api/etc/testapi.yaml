@@ -1,9 +1,20 @@
 Name: testApi
-Host: 0.0.0.0
+Host: 127.0.0.1
 Port: 8888
 
 
+DB:
+  DataSource: root:123456@tcp(mysql:3306)/test_as?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
 JwtAuth:
   AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
   AccessExpire: 5231321321
+
+TestRpcConf:
+  Endpoints:
+    - testrpc:8080
+  NonBlock: true
+#打印日志
+Log:
+  Encoding: plain
+  Level: error

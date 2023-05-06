@@ -1,26 +1,36 @@
 syntax = "v1"
 
 info(
-    title: "testApi"
-    desc: "testApi"
-    author: "type author here"
-    email: "type email here"
-    version: "type version here"
+	title: "testApi"
+	desc: "testApi"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
 )
 
 type request {
-    Id int64 `form:"id"`
+	Id int64 `form:"id"`
 }
 
 type response {
-    Message string `json:"message"`
+	Message string `json:"message"`
+}
+
+type DbRequest {
+	Id int64 `form:"id"`
+}
+
+type DbResponse {
+	Message string `json:"message"`
 }
 
 @server(
-    jwt: JwtAuth
-    group: test
+	group: test
 )
 service testApi {
-    @handler test
-    get /test (request) returns (response)
+	@handler test
+	get /test (request) returns (response)
+
+	@handler Dbtest
+	get /Dbtest (DbRequest) returns (DbResponse)
 }
